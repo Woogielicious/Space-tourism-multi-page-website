@@ -1,0 +1,164 @@
+$font-stack: "Arial", sans-serif;
+$primary-color: #ffffff;
+$accent-color: #0b3d91;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-end {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+@mixin flex-start {
+  display: flex;
+  justify-content: start;
+}
+
+@mixin barlow-regular {
+  font-family: "Barlow", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+@mixin barlow-condensed {
+  font-family: "Barlow condensed", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin bellefair-regular {
+  font-family: "Bellefair", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+// Global Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-stack;
+  color: $primary-color;
+  background: url("../assets/home/background-home-desktop.jpg") no-repeat center
+    center fixed;
+  background-size: cover;
+}
+
+// Header and Navigation
+.main-header {
+  @include flex-end;
+  margin-top: 40px;
+}
+
+.main-nav {
+  width: 50%;
+  height: 96px;
+  display: flex;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  justify-content: space-around;
+
+  .nav-list {
+    @include flex-center;
+    @include barlow-condensed;
+    list-style: none;
+    li {
+      margin: 0 20px;
+      text-transform: uppercase;
+      a {
+        font-weight: 100;
+        color: $primary-color;
+        letter-spacing: 2.7px;
+        text-decoration: none;
+        &.active {
+          padding-bottom: 35px;
+          border-bottom: 3px solid $primary-color;
+        }
+
+        span {
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
+
+// Space Section
+.space {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  height: calc(100vh - 100px);
+  padding: 0 165px;
+  text-align: center;
+
+  .space-content {
+    @include flex-start;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .space-left-content {
+      align-self: flex-end;
+      text-align: left;
+    }
+
+    .space-right-content {
+      align-self: flex-end;
+      text-align: right;
+    }
+
+    h1 {
+      @include barlow-condensed;
+      text-align: left;
+      text-transform: uppercase;
+      font-size: 2em;
+      span {
+        @include bellefair-regular;
+        display: block;
+        color: white;
+        font-size: 10rem;
+        margin: 20px 0 30px 0;
+      }
+    }
+
+    p {
+      @include barlow-regular;
+      max-width: 600px;
+      font-weight: 200;
+      font-style: normal;
+      font-size: 1.5rem;
+      line-height: 175%;
+      text-align: left;
+    }
+
+    .btn-explore {
+      @include bellefair-regular;
+      @include flex-center;
+      margin-top: 40px;
+      padding: 10px 30px;
+      border: 2px solid $accent-color;
+      color: black;
+      background: white;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: normal;
+      font-size: 2rem;
+      height: 274px;
+      width: 274px;
+      border-radius: 274px;
+      transition: background-color 0.3s, color 0.3s;
+
+      &:hover {
+        background-color: $accent-color;
+        color: $primary-color;
+      }
+    }
+  }
+}
